@@ -53,11 +53,12 @@ public class VotingBox extends SuperKarel {
 					move();
 					turnRight();
 					move();
+						if(frontIsBlocked()) {
+							return;
+						}
 					move();
 			} 
 			
-// FIGURE OUT HOW TO GET HIM TO STOP AT THE WALL WITHOUT HIM RUNNING INTO IT			
-
 		} // CLOSE METHOD FOR - while(frontIsClear() loop
 	
 	}  // CLOSE METHOD FOR - checkForBeepersPresent()
