@@ -1,21 +1,20 @@
+// Karel_the_Robot_Voting_Helper - Stanford Assignment #1
+
 import stanford.karel.*;
 
 public class VotingBox extends SuperKarel {
 
 	public void run() {
 		
-// since we start on column one we have to move into the voting area
+// Karel starts on column 1 - moves him into the voting area
 		
 		move();
 		checkForBeepersPresent();
-		
 	}
 	
 //******************* MY METHODS START ***************************	
-	
 
-	
-// checking to see if there are beepers present in the middle spot & if there is a beeper present we move 2 spaces forward to the next voting column	
+// BEEPERS PRESENT IN MIDDLE - move to next voting column	
 	
 	private void checkForBeepersPresent() {
 		
@@ -24,30 +23,30 @@ public class VotingBox extends SuperKarel {
 			if(beepersPresent()) {
 				move();
 				move();
-			
 			}	
 		
-// NO BEEPER IN MIDDLE - look for beepers in that row 
+// NO BEEPER IN MIDDLE - look for beepers in the top box of that row 
 		
 			if(noBeepersPresent()) {
 				turnLeft();
 				move();
 			}
 
-// BEEPER FOUND -  pick all the beepers
+// BEEPER FOUND IN TOP BOX -  pick all the beepers
 
 			while (beepersPresent()) {
 				pickBeeper();
 			}
 				
-// NO BEEPER PRESENT - turn around to check the bottom spot & reset to the middle spot. 
+// NO BEEPER PRESENT IN THE TOP BOX - turn around to check the bottom box & reset to the middle spot. 
 					
 			if (noBeepersPresent()) {
 					turnAround();
 					move();
 					move();
-					turnLeft();
-					turnLeft();
+					if(frontIsBlocked()) {
+						turnAround();
+					}
 						while (beepersPresent()) {
 								pickBeeper();
 						}
@@ -55,19 +54,14 @@ public class VotingBox extends SuperKarel {
 					turnRight();
 					move();
 					move();
-					
 			} 
 			
+// FIGURE OUT HOW TO GET HIM TO STOP AT THE WALL WITHOUT HIM RUNNING INTO IT			
+
 		} // CLOSE METHOD FOR - while(frontIsClear() loop
+	
 	}  // CLOSE METHOD FOR - checkForBeepersPresent()
 	
 //************************* FINAL BRACE **********************************
 		
 }
-	
-	
-	
-		
-	
-		
-
