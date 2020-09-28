@@ -7,7 +7,6 @@ public class VotingBox extends SuperKarel {
 // since we start on column one we have to move into the voting area
 		
 		move();
-		//testing git upload
 		checkForBeepersPresent();
 		
 	}
